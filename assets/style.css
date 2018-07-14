@@ -2,4 +2,39 @@
     border-style:solid;
     border-width: 5px;
     border-color: black;
+    height: 100px;
+
 }
+
+#wholegame  {
+    width:1000px;
+    height:1000px;
+
+}
+
+#questionstatus {
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+#questions {
+    width:600px;
+    height:330px;       
+    float:left;
+}
+
+#status  {
+    float:right;
+    width: 360px;
+}
+
+#answersitems  {
+    width: 700px;
+}
+
+
+
+/* .right {
+    float:right;
+    width: 360px;
+} */
