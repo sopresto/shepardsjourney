@@ -14,78 +14,62 @@
     <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
-
-<body>
-    <center>
-
-        <div class="border" id="wholegame">
-
-            <div id="gametitle">
-
-                <h1> Shepard's Journey</h1>
-
-
-            </div>
-
-            <div class="border" id="questionstatus">
-
-
-                <div class="border" id="questions">
-
+    <body class="introScene">
+        <center>
+            <div class="border" id="wholegame">
+                <div id="gametitle">
+                    <h1> Shepard's Journey</h1>
                 </div>
-
-
-
-                <div id="status">
-
-
-
-                    <div class="border right" id="time">
-
+                <div class="border" id="questionstatus">
+                    <div class="border" id="questions">
+                    </div>
+                    <div id="status">
+                        <div class="border right" id="time">
+                        </div>
+                        <div class="border right" id="health">
+                        </div>
+                        <div class="border right" id="sheep">
+                        </div>
+                    </div>
+                </div>
+                <div class="border" id="answersitems">
+                    <div class="border" id="answers">
+                    </div>
+                    <div class="border" id="itmes">
                     </div>
 
-                    <div class="border right" id="health">
+                    <div class="border" id="answersitems">
 
+                        <div class="border" id="answers">
+                            <button id="food">
+                                <img src="images/food.JPG" alt="" height="75px" width="75px">
+                            </button>
+                            <button id="staff">
+                                <img src="images/staff.jpg" alt="" height="75px" width="75px">
+                            </button>
+                            <button id="flute">
+                                <img src="images/flute.jpg" alt="" height="75px" width="75px">
+                            </button>
+
+                        </div>
+
+                        <div class="border" id="items">
+
+                        </div>
+                        <!-- Sabrina - please add this button div at the very bottom of the page  -->
                     </div>
-
-                    <div class="border right" id="sheep">
-
-                    </div>
-
+                    <button id="itemsCollected">All done selecting items! Click this button to proceed.</button>
                 </div>
-
-
 
             </div>
+            
+
+        </center>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/logic.js"></script>
 
 
-            <div class="border" id="answersitems">
-
-                <div class="border" id="answers">
-
-                </div>
-
-                <div class="border" id="itmes">
-
-                </div>
-
-
-            </div>
-
-            <a href="index.html">
-                <img src="images/start.png" alt="">
-            </a>
-
-        </div>
-
-
-
-    </center>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/logic.js"></script>
-
-
-</body>
+    </body>
 
 
 
