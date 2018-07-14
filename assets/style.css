@@ -32,6 +32,12 @@
     width: 700px;
 }
 
+#startButton {
+    animation: blinker 1s linear infinite; 
+}
+    @keyframes blinker {  
+    50% { opacity: 0; }
+  }     
 
 
 /* .right {
