@@ -9,81 +9,79 @@
 
     <link rel="stylesheet" type="text/css" href="assets/reset.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Aclonica|Germania+One' rel='stylesheet'>
 
     <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
-
-<body class="introScene">
-    <center>
-
-        <div class="border" id="wholegame">
-
-            <div id="gametitle">
-
-                <h1> Shepard's Journey</h1>
-
-
-            </div>
-
-            <div class="border" id="questionstatus">
-
-
-                <div class="border" id="questions">
-
+    <body class="introScene">
+        <center>
+            <div class="border" id="wholegame">
+                <div id="gametitle">
+                    <h1> Shepard's Journey</h1>
                 </div>
+                <div class="border" id="questionstatus">
+                    <div class="border" id="questions">
+                    </div>
+                    <div id="status">
+                        <div class="border right" id="time">
+                        </div>
+                        <div class="border right" id="health">
+                        </div>
+                        <div class="border right" id="sheep">
+                        </div>
+                    </div>
+                </div>
+                <div class="border" id="answersitems">
+                    <div class="border" id="answerOne">
+                    </div>
+                    <div class="border" id="answerTwo">
+                    </div>
 
+                    <!-- <div class="border" id="answersitems"> -->
 
+                        <div class="border" id="itemsContainer">
+                            <button id="food">
+                                <img src="images/food.JPG" alt="" height="75px" width="75px">
+                            </button>
+                            <button id="staff">
+                                <img src="images/staff.jpg" alt="" height="75px" width="75px">
+                            </button>
+                            <button id="flute">
+                                <img src="images/flute.jpg" alt="" height="75px" width="75px">
+                            </button>
 
-                <div id="status">
+                        </div>
 
+                        <!-- <div class="border" id="items">
 
-
-                    <div class="border right" id="time">
+                        </div> -->
 
                     </div>
 
-                    <div class="border right" id="health">
-
+                    <div id="itemsHolder">
+                        <h2>Items In Hand</h2>
+                        <br>
+                        > dynamically append food, staff, flute, or all items into this div ---
                     </div>
 
-                    <div class="border right" id="sheep">
+                    <button id="itemsCollected">When all done selecting items, click this button to continue your journey.</button>
 
+                    <div id="itemDescription" >
+                            > This is where the description of the item will dynamically appear when user hovers over the item button ---
+                            You are currently seeing this div because it's not currently set to 'visibility: hidden;'
                     </div>
-
-                </div>
-
-
+                    
 
             </div>
+            
+
+        </center>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/logic.js"></script>
 
 
-            <div class="border" id="answersitems">
-
-                <div class="border" id="answers">
-
-                </div>
-
-                <div class="border" id="itmes">
-
-                </div>
-
-
-            </div>
-
-            <button id="itemsCollect">All done selecting items! Click this button to proceed.</button>
-
-        </div>
-
-
-
-    </center>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/logic.js"></script>
-
-
-</body>
+    </body>
 
 
 
