@@ -43,7 +43,8 @@ $("#staff").on("click", function(){
  })
 
  //this will hide the answers div as it does not need to appear in this scene.
-$("#answers").hide();
+$("#answerTwo").hide();
+$("#answerOne").hide();
 
 
 
