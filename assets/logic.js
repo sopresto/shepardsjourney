@@ -18,7 +18,7 @@ $("#food").on("click", function () {
     var food = $("#food")
     $("#items").append(food);
     //this function wil add additional health to the health counter upon click.
-    health += 50;
+    // health += 50;
     $('#health').html("Remaining health:" + health);
 })
 
@@ -33,7 +33,7 @@ $("#staff").on("click", function(){
     var sheep = 5;
     $("#items").append(flute);
     //this function will add additional lives to the sheep counters upon click.
-    sheep+= 5;
+    // sheep+= 5;
     $('#sheep').html("this is how many sheep you have:" + sheep);
     
  })
