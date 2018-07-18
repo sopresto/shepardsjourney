@@ -1,3 +1,175 @@
+//these are global variables.
+
+var score = (time*10) + (sheep*10) + (health*5);
+
+var time = 60
+    var timerspeed = 300
+var sheep = 5
+var health = 100
+
+
+var x = 0
+var timer; 
+
+//this will append time, sheeo, health to their respective divs.
+
+$('#time').html(time);
+$('#sheep').html(sheep);
+$('#health').html(health);
+
+ //this will hide the answers div as it does not need to appear in this scene.
+ $("#answerTwo").hide();
+ $("#answerOne").hide();
+
+//opener: shows three tools for selection; ask which item to be selected in quetion div;
+//on click of a tool item will move into items div 
+
+$("#food").on("click", function () {
+    var health = 100
+    var food = $("#food")
+    $("#itemsHolder").append(food);
+    $('#health').html("Remaining health:" + health);
+})
+
+$("#staff").on("click", function(){
+    var staff = $("#staff")
+    $("#itemsHolder").append(staff);   
+ })
+
+ $("#flute").on("click", function(){
+    var flute = $("#flute");
+    var sheep = 5;
+    $("#itemsHolder").append(flute);
+    $('#sheep').html("this is how many sheep you have:" + sheep);
+    
+ })
+
+//
+$(document).on('click','#itemsCollected', function(){
+    $("#answerTwo").show();
+    $("#answerOne").show();
+    $('#itemsCollected').hide();
+    $("#itemsContainer").hide();
+    // $("#gameScenes").css("background-image", "url('images/SceneSwamp.png')");
+    $('#time').text("00:" + time);
+    timer = setInterval(startTimer, 1000 - timerspeed);
+
+// background = '../images/' + questions[x].Image[0];
+// $('body').css('background-image', background);
+
+// setTimeout(function () { 
+
+    $('#questions').text(questions[x].question);
+    $('#answerOne').text(questions[x].A[0]);
+    $('#answerTwo').text(questions[x].B[0]);
+
+// ;}, 500);
+});
+
+
+
+
+//SET SWAMP SCENE and ANSWERS
+
+$(document).on('click','#startgame', function(){
+    
+        $('#startgame').hide();
+        $('#time').text("00:" + time);
+        timer = setInterval(startTimer, 1000 - timerspeed);
+
+    // background = '../images/' + questions[x].Image[0];
+    // $('body').css('background-image', background);
+
+    setTimeout(function () { 
+
+        $('#questions').text(questions[x].question);
+        $('#answerOne').text(questions[x].A[0]);
+        $('#answerTwo').text(questions[x].B[0]);
+
+    ;}, 500);
+});
+
+
+//SET SWAMP SC
+
+$(document).on('click','#answerOne', function(){
+    x++
+        $('#questions').text(questions[x].question);
+        $('#answerOne').text(questions[x].A[0]);
+            $('#option')
+        $('#answerTwo').text(questions[x].B[0]);
+});
+
+$(document).on('click','#answerTwo', function(){
+    x++
+        $('#questions').text(questions[x].question);
+        $('#answerOne').text(questions[x].A[0]);
+        $('#answerTwo').text(questions[x].B[0]);
+});
+
+
+
+
+
+function startTimer(){
+    time--;
+    $('#time').text("00:" + time);
+
+    // if (time > 60) {
+    //     $('#time').text("1:" + time/60);
+    // }
+
+    if (time < 10) {
+    $('#time').text("00:0" + time);     
+    }
+
+    if (time === 0) {
+            clearInterval(timer)
+            // $('#gamefrost').html('<img id = "gameover" src="Assets/Images/gameover.jpg">')
+            // $('#topbar').html('<img id = "replay" src = "Assets/Images/replay.png">')
+
+    }
+}
+
+
+//FIREBASE LOGIC 
+
+// var config = {
+//     apiKey: "AIzaSyDU155hlBn7exNHZkQRg5ObAn1ABXaq4qo",
+//     authDomain: "shepardjourney.firebaseapp.com",
+//     databaseURL: "https://shepardjourney.firebaseio.com",
+//     projectId: "shepardjourney",
+//     storageBucket: "",
+//     messagingSenderId: "469264439844"
+//   };
+
+//         firebase.initializeApp(config);
+
+//         var database = firebase.database();
+
+//         var playername = "";
+//         var playerscore = "";
+
+//     $("#pickname").on("click", function(event) {
+//         event.preventDefault();
+
+//         playername = $("#inputname").val().trim();
+
+//         database.ref().push({
+//             playername: playername,
+
+//         });
+
+//     });
+
+//     database.ref().on("child_added", function(snapshot) {
+//       // storing the snapshot.val() in a variable for convenience
+//       var sv = snapshot.val();
+
+//       // Console.loging the last user's data
+//       console.log(sv.playername);
+
+//     });
 
 
 var questions = [
@@ -40,173 +212,6 @@ var questions = [
     B: ["If you choose to not give them any sheep then you continue on to the next step."]
     }
 ]
-
-
-var score = (time*10) + (sheep*10) + (health*5);
-
-var time = 60
-    var timerspeed = 300
-var sheep = 5
-var health = 100
-
-
-var x = 0
-var timer; 
-
-$('#time').html(time);
-$('#sheep').html(sheep);
-$('#health').html(health);
-
-
-//SET SWAMP SCENE and ANSWERS
-
-$(document).on('click','#startgame', function(){
-    
-        $('#startgame').hide();
-        $('#time').text("00:" + time);
-        timer = setInterval(startTimer, 1000 - timerspeed);
-
-    // background = '../images/' + questions[x].Image[0];
-    // $('body').css('background-image', background);
-
-    setTimeout(function () { 
-
-        $('#questions').text(questions[x].question);
-        $('#option1').text(questions[x].A[0]);
-        $('#option2').text(questions[x].B[0]);
-
-    ;}, 500);
-});
-
-
-//SET SWAMP SC
-
-$(document).on('click','#option1', function(){
-    x++
-        $('#questions').text(questions[x].question);
-        $('#option1').text(questions[x].A[0]);
-            $('#option')
-        $('#option2').text(questions[x].B[0]);
-});
-
-$(document).on('click','#option2', function(){
-    x++
-        $('#questions').text(questions[x].question);
-        $('#option1').text(questions[x].A[0]);
-        $('#option2').text(questions[x].B[0]);
-});
-
-
-
-
-
-function startTimer(){
-    time--;
-    $('#time').text("00:" + time);
-
-    // if (time > 60) {
-    //     $('#time').text("1:" + time/60);
-    // }
-
-    if (time < 10) {
-    $('#time').text("00:0" + time);     
-    }
-
-    if (time === 0) {
-            clearInterval(timer)
-            // $('#gamefrost').html('<img id = "gameover" src="Assets/Images/gameover.jpg">')
-            // $('#topbar').html('<img id = "replay" src = "Assets/Images/replay.png">')
-
-    }
-}
-
-
-//FIREBASE LOGIC 
-
-var config = {
-    apiKey: "AIzaSyDU155hlBn7exNHZkQRg5ObAn1ABXaq4qo",
-    authDomain: "shepardjourney.firebaseapp.com",
-    databaseURL: "https://shepardjourney.firebaseio.com",
-    projectId: "shepardjourney",
-    storageBucket: "",
-    messagingSenderId: "469264439844"
-  };
-
-        firebase.initializeApp(config);
-
-        var database = firebase.database();
-
-        var playername = "";
-        var playerscore = "";
-
-    $("#pickname").on("click", function(event) {
-        event.preventDefault();
-
-        playername = $("#inputname").val().trim();
-
-        database.ref().push({
-            playername: playername,
-
-        });
-
-    });
-
-    database.ref().on("child_added", function(snapshot) {
-      // storing the snapshot.val() in a variable for convenience
-      var sv = snapshot.val();
-
-      // Console.loging the last user's data
-      console.log(sv.playername);
-
-    });
-
-//global variables.
-//setting and appending the numerical values to the specific status divs.
-var time = 50
-var sheep = 5
-var health = 100
-
-//update this later with proper formatting.
-$('#time').html("this is how much time you have:" + time);
-$('#sheep').html("this is how many sheep you have:" + sheep);
-$('#health').html("Remaining health:" + health);
-
-
-//opener: shows three tools for selection; ask which item to be selected in quetion div;
-//on click of a tool item will move into items div 
-
-$("#food").on("click", function () {
-    var health = 100
-    var food = $("#food")
-
-    $("#itemsHolder").append(food);
-    //this function wil add additional health to the health counter upon click.
-    // health += 50;
-    $('#health').html("Remaining health:" + health);
-})
-
-$("#staff").on("click", function(){
-    var staff = $("#staff")
-
-    $("#itemsHolder").append(staff);
-
-    
- })
-
- $("#flute").on("click", function(){
-    var flute = $("#flute");
-    var sheep = 5;
-
-    $("#itemsHolder").append(flute);
-    //this function will add additional lives to the sheep counters upon click.
-    // sheep+= 5;
-    $('#sheep').html("this is how many sheep you have:" + sheep);
-    
- })
-
- //this will hide the answers div as it does not need to appear in this scene.
-$("#answers").hide();
-
 
 
 

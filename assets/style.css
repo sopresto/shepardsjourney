@@ -127,29 +127,7 @@ p {
     border-color: green;
     height: 100px;
 }
-/* #wholegame  {
-    width:1000px;
-    height:1000px;
-    padding: 20px;
-}
-#questionstatus {
-    height: 400px;
-    margin-bottom: 20px;
-}
-#questions {
-    width:600px;
-    height:330px;       
-    float:left;
-}
-#status  {
-    float:right;
-    width: 360px;
 
-} */
-/* #itemsContainer {
-    margin-top: 10px;
-    padding: 10px;
-} */
 
 #food, #staff, #flute {
     border: solid 5px darkgray;
