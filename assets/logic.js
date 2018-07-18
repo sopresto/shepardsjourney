@@ -16,6 +16,7 @@ $('#health').html("Remaining health:" + health);
 $("#food").on("click", function () {
     var health = 100
     var food = $("#food")
+
     $("#itemsHolder").append(food);
     //this function wil add additional health to the health counter upon click.
     health += 50;
@@ -24,13 +25,16 @@ $("#food").on("click", function () {
 
 $("#staff").on("click", function(){
     var staff = $("#staff")
+
     $("#itemsHolder").append(staff);
+
     
  })
 
  $("#flute").on("click", function(){
     var flute = $("#flute");
     var sheep = 5;
+
     $("#itemsHolder").append(flute);
     //this function will add additional lives to the sheep counters upon click.
     sheep+= 5;
@@ -40,6 +44,7 @@ $("#staff").on("click", function(){
 
  //this will hide the answers div as it does not need to appear in this scene.
 $("#answers").hide();
+
 
 
 //Firebase 
@@ -56,6 +61,7 @@ $("#answers").hide();
   };
   firebase.initializeApp(config);
 </script> */}
+
 
  //This is referencing all of the scenes after the intro and items.
  //related to index.
