@@ -1,18 +1,16 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>Shepard's Journey</title>
-
     <link rel="stylesheet" type="text/css" href="assets/reset.css">
-
-    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
-
+    <link href='https://fonts.googleapis.com/css?family=Aclonica|Germania+One' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
+
+
+
 
     <body class="introScene">
         <center>
@@ -22,6 +20,7 @@
                 </div>
                 <div class="border" id="questionstatus">
                     <div class="border" id="questions">
+
                         <p>You must first decide on the items that you want to keep for your journey. 
                             As a Sheppard you typically carry a STAFF, FLUTE and some FOOD. 
                             The staff is great for fighting off attackers, the flute is used to call back your sheep and the food is used to heal yourself. 
@@ -36,77 +35,43 @@
                         <div class="border right" id="sheep">
                         </div>
                     </div>
+
                 </div>
                 <div class="border" id="answersitems">
-                    <div class="border" id="answers">
+                    <div class="border" id="answerOne">
                     </div>
-                    <div class="border" id="items">
+                    <div class="border" id="answerTwo">
                     </div>
-
-                    <div class="border" id="answersitems">
-
-                        <div class="border" id="answers">
+                    <!-- <div class="border" id="answersitems"> -->
+                        <div class="border" id="itemsContainer">
                             <button id="food">
+                                <span id="foodDescription">Food = adds 100 health</span>
                                 <img src="images/food.JPG" alt="" height="75px" width="75px">
                             </button>
                             <button id="staff">
+                                <span id="staffDescription">Staff = will cause 2x damage</span>
                                 <img src="images/staff.jpg" alt="" height="75px" width="75px">
                             </button>
                             <button id="flute">
+                                <span id="fluteDescription">Flute = calls back 5 sheep</span>
                                 <img src="images/flute.jpg" alt="" height="75px" width="75px">
                             </button>
-
                         </div>
-
-                        <!-- <div class="border" id="items"> -->
-
-                        </div>
-                        <!-- Sabrina - please add this button div at the very bottom of the page  -->
+                        <!-- <div class="border" id="items">
+                        </div> -->
                     </div>
-                    <a href="index.html"><button id="itemsCollected">All done selecting items! Click this button to proceed.</button></a>
-                </div>
-
+                    <div id="itemsHolder">
+                        <h2>Items In Hand</h2>
+                        <br>
+                        <!-- dynamically append food, staff, flute, or all items into this div -->
+                    </div>
+                    <a href="index.html"><button id="itemsCollected">When all done selecting items, click this button to continue your journey.</button></a>
+                    
             </div>
             
-
         </center>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/logic.js"></script>
-
-
     </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>

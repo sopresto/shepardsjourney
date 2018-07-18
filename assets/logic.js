@@ -16,7 +16,8 @@ $('#health').html("Remaining health:" + health);
 $("#food").on("click", function () {
     var health = 100
     var food = $("#food")
-    $("#items").append(food);
+
+    $("#itemsHolder").append(food);
     //this function wil add additional health to the health counter upon click.
     health += 50;
     $('#health').html("Remaining health:" + health);
@@ -24,14 +25,17 @@ $("#food").on("click", function () {
 
 $("#staff").on("click", function(){
     var staff = $("#staff")
-    $("#items").append(staff);
+
+    $("#itemsHolder").append(staff);
+
     
  })
 
  $("#flute").on("click", function(){
     var flute = $("#flute");
     var sheep = 5;
-    $("#items").append(flute);
+
+    $("#itemsHolder").append(flute);
     //this function will add additional lives to the sheep counters upon click.
     sheep+= 5;
     $('#sheep').html("this is how many sheep you have:" + sheep);
@@ -42,6 +46,21 @@ $("#staff").on("click", function(){
 $("#answers").hide();
 
 
+
+//Firebase 
+{/* <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDU155hlBn7exNHZkQRg5ObAn1ABXaq4qo",
+    authDomain: "shepardjourney.firebaseapp.com",
+    databaseURL: "https://shepardjourney.firebaseio.com",
+    projectId: "shepardjourney",
+    storageBucket: "",
+    messagingSenderId: "469264439844"
+  };
+  firebase.initializeApp(config);
+</script> */}
 
 
  //This is referencing all of the scenes after the intro and items.
