@@ -28,7 +28,7 @@ $("#food").on("click", function () {
     var health = 100
     var food = $("#food")
     $("#itemsHolder").append(food);
-    $('#health').html("Remaining health:" + health);
+    $('#health').html("Remaining health: " + health);
 })
 
 $("#staff").on("click", function(){
@@ -40,17 +40,17 @@ $("#staff").on("click", function(){
     var flute = $("#flute");
     var sheep = 5;
     $("#itemsHolder").append(flute);
-    $('#sheep').html("this is how many sheep you have:" + sheep);
+    $('#sheep').html("This is how many sheep you have: " + sheep);
     
  })
 
 //
 $(document).on('click','#itemsCollected', function(){
+    $(".introScene").css("background-image", "url(images/sceneSwamp.png)");  // this code needs to be on top for it to work.
     $("#answerTwo").show();
     $("#answerOne").show();
     $('#itemsCollected').hide();
     $("#itemsContainer").hide();
-    // $("#gameScenes").css("background-image", "url('images/SceneSwamp.png')");
     $('#time').text("00:" + time);
     timer = setInterval(startTimer, 1000 - timerspeed);
 
