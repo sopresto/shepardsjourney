@@ -1,24 +1,55 @@
-body  {
-    /* background-image: url("../images/start.png"); */
+html, body {
+    height: 100%;
+}
+
+.introScene {
+    background-image: url(../images/SceneIntro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#gameScenes {
+    /* background-image: url(../images/sceneIntro.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Germania One', cursive;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Germania One', cursive;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#introParagraph {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
 }
 
 .border {
     border-style:solid;
     border-width: 5px;
-    border-color: black;
+    /* border-color: black; */
+    border-color: green;
     height: 100px;
-
 }
 
 #wholegame  {
     width:1000px;
-    height:1000px;
-
+    height:950px;
+    padding: 20px;
 }
 
 #questionstatus {
-    height: 400px;
+    height: 350px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    padding: 5px;
 }
 
 #questions {
@@ -33,7 +64,10 @@ body  {
 }
 
 #answersitems  {
-    width: 700px;
+    width: 600px;
+    margin-left: 10px;
+    height: auto;
+    float: left;
 }
 
 #startButton {
@@ -41,10 +75,200 @@ body  {
 }
     @keyframes blinker {  
     50% { opacity: 0; }
-  }     
+  }  
 
+#itemsCollected {
+    border: solid 3px brown;
+    border-radius: 5px;
+    background: linear-gradient(rgb(110, 45, 15), rgb(75, 219, 111), rgb(110, 45, 15));  
+    font-family: 'Germania One', cursive;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px;
+    animation: blinker 1s linear infinite; 
+    margin-top: 20px;
+}  
 
-/* .right {
+#itemsHolder {
+    border: solid 5px green;
+    float: right;
+    width: 330px;
+    height: 310px;
+    margin-right: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background:rgb(70, 130, 70);
+}
+
+#shep {
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+}
+
+  .introScene {
+    background-image: url(../images/SceneIntro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+}
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+}
+.border {
+    border-style:solid;
+    border-width: 5px;
+    /* border-color: black; */
+    border-color: green;
+    height: 100px;
+}
+/* #wholegame  {
+    width:1000px;
+    height:1000px;
+    padding: 20px;
+}
+#questionstatus {
+    height: 400px;
+    margin-bottom: 20px;
+}
+#questions {
+    width:600px;
+    height:330px;       
+    float:left;
+}
+#status  {
     float:right;
     width: 360px;
+
 } */
+/* #itemsContainer {
+    margin-top: 10px;
+    padding: 10px;
+} */
+
+#food, #staff, #flute {
+    border: solid 5px darkgray;
+    box-shadow: 0px 0px 20px #fff;
+    margin-top: 5px;
+    margin-left: 15px;
+    display: inline-block;
+    position: relative;
+}
+
+#itemDescription {
+    padding: 5px;
+    width: auto;
+    height: auto;
+    background: lightgray;
+    margin-top: 20px;
+    border: solid 2px lightgray;
+    font-family: 'Germania One', cursive;
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+#food #foodDescription {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#food #foodDescription::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+#food:hover #foodDescription {
+    visibility: visible;
+    opacity: 1;
+}
+
+#staff #staffDescription {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#staff #staffDescription::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+#staff:hover #staffDescription {
+    visibility: visible;
+    opacity: 1;
+}
+
+#flute #fluteDescription {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#flute #fluteDescription::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+#flute:hover #fluteDescription {
+    visibility: visible;
+    opacity: 1;
+}
+
