@@ -107,10 +107,7 @@ $(document).on('click','#answerTwo', function(){
         $('#answerTwo').text(questions[x].B[0]);
 });
 
-
-
-
-
+//this function will begin the timer that runs throughout the game 
 function startTimer(){
     time--;
     $('#time').text("00:" + time);
