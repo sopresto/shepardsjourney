@@ -44,9 +44,12 @@ $("#staff").on("click", function(){
     
  })
 
+
 //
 $(document).on('click','#itemsCollected', function(){
-    $(".introScene").css("background-image", "url(images/sceneSwamp.png)");  // this code needs to be on top for it to work.
+    // $(".introScene").css("background-image", "url(images/sceneSwamp.png)");  // this code needs to be on top for it to work.
+    background = questions[x].Image[0];
+    $(".introScene").css("background-image", "url(" + questions[x].Image[0] + ")");
     $("#answerTwo").show();
     $("#answerOne").show();
     $('#itemsCollected').hide();
@@ -177,21 +180,21 @@ var questions = [
     //SWAMP QUESTION
     {
     question: "The quickest way back appears to be directly through a swampy mess! Do you choose to wade through the swamp or safely hike around. The swamp is 3x faster but also 3x more dangerous. So choose wiseley!",
-    Image: ["sceneswamp.png"],
+    Image: ["images/sceneSwamp.png"],
     A: ["If you choose to wade through the swamp then you only loose 20 seconds and	anywhere from 0-3 sheep."], 
     B: ["If you choose to go around then you loose no sheep but 60 seconds off of the clock."] },
 
     //WOLF QUESTION
     {
     question: "A wolf attacks, you can choose to fight back or run.",
-    Image: ["sceneScarywoodwolf.jpg"],
+    Image: ["images/sceneScaryWoodWolf.png"],
     A: ["If you fight back then (generates random damage) to both you and wolf"], 
     B: ["If you choose run then you loose a random of 0-3 sheep from your herd."] },
 
     //BRIDGE TROLL 1
     {
     question: "A bridge troll appears and blocks your way. The troll is extremely strong and dangerous. Do you choose to answer his question or fight the troll.",
-    Image: ["scenebridgetroll.jpg"],
+    Image: ["images/sceneBridgeTroll.jpg"],
     A: ["If you choose to fight troll then you loose random life and cause random damage (more if you have the STAFF). The troll most likely kills the Shepherd, game over."], 
     B: ["Answer troll's question"]
      },
@@ -199,7 +202,7 @@ var questions = [
      //BRIDGE TROLL 2 QUESTION:
     {
     question: "What # is the first element of an array?!?!",
-    Image: ["scenebridgetroll.jpg"],
+    Image: ["images/sceneBridgeTroll.jpg"],
     A: ["0"], 
     B: ["1"]
     },
@@ -207,7 +210,7 @@ var questions = [
     //ELVES QUESTION:
     {
     question: "Dozens of magic elves appear from the woods. The elves have recently lost their Treehouse Cookie Factory in a tragic fire and are in dire need for resources. They offer to trade you as many sheep as you would like to give. For each sheep the will turn the clock back 30 seconds or give you back a X amount of life.",
-    Image: ["sceneWoodselves.png"],
+    Image: ["images/sceneWoodsElves.jpg"],
     A: ["If you choose to trade sheep then you get 30 seconds for each sheep that you give up."], 
     B: ["If you choose to not give them any sheep then you continue on to the next step."]
     }
