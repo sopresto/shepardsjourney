@@ -6,8 +6,6 @@ var time = 60
     var timerspeed = 300
 var sheep = 5
 var health = 100
-
-
 var x = 0
 var timer; 
 
@@ -45,7 +43,8 @@ $("#staff").on("click", function(){
  })
 
 
-//
+
+//Scene one is here.
 $(document).on('click','#itemsCollected', function(){
     // $(".introScene").css("background-image", "url(images/sceneSwamp.png)");  // this code needs to be on top for it to work.
     background = questions[x].Image[0];
@@ -70,37 +69,15 @@ $(document).on('click','#itemsCollected', function(){
 });
 
 
-
-
-//SET SWAMP SCENE and ANSWERS
-
-$(document).on('click','#startgame', function(){
-    
-        $('#startgame').hide();
-        $('#time').text("00:" + time);
-        timer = setInterval(startTimer, 1000 - timerspeed);
-
-    // background = '../images/' + questions[x].Image[0];
-    // $('body').css('background-image', background);
-
-    setTimeout(function () { 
-
-        $('#questions').text(questions[x].question);
-        $('#answerOne').text(questions[x].A[0]);
-        $('#answerTwo').text(questions[x].B[0]);
-
-    ;}, 500);
-});
-
-
-//SET SWAMP SC
+//SET SWAMP SC. This function will begin looping through questions and answer choices for each scene.
 
 $(document).on('click','#answerOne', function(){
     x++
         $('#questions').text(questions[x].question);
         $('#answerOne').text(questions[x].A[0]);
-            $('#option')
         $('#answerTwo').text(questions[x].B[0]);
+
+       
 });
 
 $(document).on('click','#answerTwo', function(){
@@ -110,10 +87,7 @@ $(document).on('click','#answerTwo', function(){
         $('#answerTwo').text(questions[x].B[0]);
 });
 
-
-
-
-
+//this function will begin the timer that runs throughout the game 
 function startTimer(){
     time--;
     $('#time').text("00:" + time);
@@ -133,46 +107,63 @@ function startTimer(){
 
     }
 }
+//Scene 2: 
+//this will add the amount of time and sheep for the first iteration:
+//user will either lose 60 seconds or lose (random sheep and 20 seconds)
+//**note time needs to be set higher */
+
+$(document).on('click','#answerOne', function(){
+    time = time - 20;
+    $('#time').html(time);
+    sheep = sheep - 3;
+    $('#sheep').html(sheep);
+    $(".introScene").css("background-image", "url(images/scenescarywoodwolf.jpg)");
+ });
+
+ 
+ $(document).on('click','#answerTwo', function(){
+    time = time - 60;
+    $('#time').html(time);
+    $("#answerTwo").attr("class", "answerTwoB")
+    $(".introScene").css("background-image", "url(images/SceneScaryWoodWolf.jpg)");
+ });
+
+ //This is for the third scene for fighting the wolf; the fight scene will
+ //will be featured here or a random amount of sheep will be lost.
+
+ //**Fighting scene should go under this: */
 
 
-//FIREBASE LOGIC 
 
-// var config = {
-//     apiKey: "AIzaSyDU155hlBn7exNHZkQRg5ObAn1ABXaq4qo",
-//     authDomain: "shepardjourney.firebaseapp.com",
-//     databaseURL: "https://shepardjourney.firebaseio.com",
-//     projectId: "shepardjourney",
-//     storageBucket: "",
-//     messagingSenderId: "469264439844"
-//   };
+ //this will remove the random amount of sheep:
+//  $(document).on('click','.answerTwoB', function(){   
+//     sheep = sheep - 3;
+//     $('#sheep').html(sheep);
+//     $("answerTwoB").attr("class", "answerTwoC")
+//     $(".introScene").css("background-image", "url(images/scenebridgetroll.jpg)");
+//  });
 
-//         firebase.initializeApp(config);
+ //Fourth Scene: 
+ //if user selects to move on to the next screen they
+ //either run from trolls or answer the trolls question
+        //**This is option A which is dependant on the code from the wolf fight */
 
-//         var database = firebase.database();
+ 
 
-//         var playername = "";
-//         var playerscore = "";
 
-//     $("#pickname").on("click", function(event) {
-//         event.preventDefault();
+//This is option B which leads to the quiz:
+ //they will see the troll bridge here they will answer a question
+ //the background remains the same here. if user answers correctly
+ // they gain health else they lose health.
 
-//         playername = $("#inputname").val().trim();
+ 
 
-//         database.ref().push({
-//             playername: playername,
 
-//         });
 
-//     });
 
-//     database.ref().on("child_added", function(snapshot) {
-//       // storing the snapshot.val() in a variable for convenience
-//       var sv = snapshot.val();
 
-//       // Console.loging the last user's data
-//       console.log(sv.playername);
 
-//     });
+
 
 
 var questions = [
@@ -194,8 +185,13 @@ var questions = [
     //BRIDGE TROLL 1
     {
     question: "A bridge troll appears and blocks your way. The troll is extremely strong and dangerous. Do you choose to answer his question or fight the troll.",
+
     Image: ["images/sceneBridgeTroll.jpg"],
     A: ["If you choose to fight troll then you loose random life and cause random damage (more if you have the STAFF). The troll most likely kills the Shepherd, game over."], 
+
+    Image: ["scenebridgetroll.jpg"],
+    A: ["Run from Troll and lose time."], 
+
     B: ["Answer troll's question"]
      },
 
@@ -215,6 +211,7 @@ var questions = [
     B: ["If you choose to not give them any sheep then you continue on to the next step."]
     }
 ]
+
 
 
 
