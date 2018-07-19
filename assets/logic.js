@@ -1,13 +1,44 @@
+
+//HIDES CHARACTERS ON PAGE LOAD 
+
+$(document).ready(function(){
+    $("#shepicon").hide();
+    $("#sheepicon").hide();
+    $("#wolf").hide();
+    $("#attack").hide();
+});
+
+
 //these are global variables.
 
 var score = (time*10) + (sheep*10) + (health*5);
 
-var time = 60
+var time = 300
     var timerspeed = 300
 var sheep = 5
 var health = 100
 var x = 0
 var timer; 
+
+function startTimer(){
+    time--;
+    $('#time').text("00:" + time);
+
+    // if (time > 60) {
+    //     $('#time').text("1:" + time/60);
+    // }
+
+    if (time < 10) {
+    $('#time').text("00:0" + time);     
+    }
+
+    if (time === 0) {
+            clearInterval(timer)
+            // $('#gamefrost').html('<img id = "gameover" src="Assets/Images/gameover.jpg">')
+            // $('#topbar').html('<img id = "replay" src = "Assets/Images/replay.png">')
+
+    }
+}
 
 //this will append time, sheeo, health to their respective divs.
 
@@ -39,12 +70,11 @@ $("#staff").on("click", function(){
     var sheep = 5;
     $("#itemsHolder").append(flute);
     $('#sheep').html("This is how many sheep you have: " + sheep);
-    
  })
 
 
 
-//Scene one is here.
+//SWAMP SCENE IS SET ON CLICK OF ITEMSCOLLECTED
 $(document).on('click','#itemsCollected', function(){
     // $(".introScene").css("background-image", "url(images/sceneSwamp.png)");  // this code needs to be on top for it to work.
     background = questions[x].Image[0];
@@ -53,11 +83,7 @@ $(document).on('click','#itemsCollected', function(){
     $("#answerOne").show();
     $('#itemsCollected').hide();
     $("#itemsContainer").hide();
-    $('#time').text("00:" + time);
     timer = setInterval(startTimer, 1000 - timerspeed);
-
-// background = '../images/' + questions[x].Image[0];
-// $('body').css('background-image', background);
 
 // setTimeout(function () { 
 
@@ -71,61 +97,61 @@ $(document).on('click','#itemsCollected', function(){
 
 //SET SWAMP SC. This function will begin looping through questions and answer choices for each scene.
 
-$(document).on('click','#answerOne', function(){
-    x++
-        $('#questions').text(questions[x].question);
-        $('#answerOne').text(questions[x].A[0]);
-        $('#answerTwo').text(questions[x].B[0]);
+// $(document).on('click','.answerOne', function(){
+
+    // x++
+    //     $('#questions').text(questions[x].question);
+    //     $('#answerOne').text(questions[x].A[0]);
+    //     $('#answerTwo').text(questions[x].B[0]);
 
        
-});
+// });
 
-$(document).on('click','#answerTwo', function(){
-    x++
-        $('#questions').text(questions[x].question);
-        $('#answerOne').text(questions[x].A[0]);
-        $('#answerTwo').text(questions[x].B[0]);
-});
+// $(document).on('click','.answerTwo', function(){
+//     x++
+//         $('#questions').text(questions[x].question);
+//         $('#answerOne').text(questions[x].A[0]);
+//         $('#answerTwo').text(questions[x].B[0]);
+// });
 
-//this function will begin the timer that runs throughout the game 
-function startTimer(){
-    time--;
-    $('#time').text("00:" + time);
 
-    // if (time > 60) {
-    //     $('#time').text("1:" + time/60);
-    // }
-
-    if (time < 10) {
-    $('#time').text("00:0" + time);     
-    }
-
-    if (time === 0) {
-            clearInterval(timer)
-            // $('#gamefrost').html('<img id = "gameover" src="Assets/Images/gameover.jpg">')
-            // $('#topbar').html('<img id = "replay" src = "Assets/Images/replay.png">')
-
-    }
-}
 //Scene 2: 
 //this will add the amount of time and sheep for the first iteration:
 //user will either lose 60 seconds or lose (random sheep and 20 seconds)
 //**note time needs to be set higher */
 
-$(document).on('click','#answerOne', function(){
+
+
+//SWAMP:
+
+$(document).on('click','.answerOne', function(){
     time = time - 20;
     $('#time').html(time);
     sheep = sheep - 3;
     $('#sheep').html(sheep);
     $(".introScene").css("background-image", "url(images/scenescarywoodwolf.jpg)");
+    $("#answerOne").attr("class", "answerOneB")
+    $("#answerTwo").attr("class", "answerTwoB")
+
+    x++
+    $('#questions').text(questions[x].question);
+    $('#answerOne').text(questions[x].A[0]);
+    $('#answerTwo').text(questions[x].B[0]);
+
  });
 
  
- $(document).on('click','#answerTwo', function(){
+ $(document).on('click','.answerTwo', function(){
     time = time - 60;
     $('#time').html(time);
+    $("#answerOne").attr("class", "answerOneB")
     $("#answerTwo").attr("class", "answerTwoB")
     $(".introScene").css("background-image", "url(images/SceneScaryWoodWolf.jpg)");
+
+    x++
+    $('#questions').text(questions[x].question);
+    $('#answerOne').text(questions[x].A[0]);
+    $('#answerTwo').text(questions[x].B[0]);
  });
 
  //This is for the third scene for fighting the wolf; the fight scene will
@@ -133,15 +159,58 @@ $(document).on('click','#answerOne', function(){
 
  //**Fighting scene should go under this: */
 
-
-
  //this will remove the random amount of sheep:
-//  $(document).on('click','.answerTwoB', function(){   
-//     sheep = sheep - 3;
-//     $('#sheep').html(sheep);
-//     $("answerTwoB").attr("class", "answerTwoC")
-//     $(".introScene").css("background-image", "url(images/scenebridgetroll.jpg)");
-//  });
+
+
+//WOLF:
+
+ $(document).on('click','.answerOneB', function(){
+    $("#wolf").show();
+    $("#shepicon").show();
+    $("#attack").show();
+
+
+            $(document).on('click','#attack', function(attack) {
+                
+                var player = parseInt($('#health').text());
+                var wolf = parseInt($('#wolf #wolflife').text());
+                var staffdamage = $('#itemsHolder #staff').val();  //I gave the staff button a value of 30
+                var playerdamage = Math.floor((Math.random()*30));	
+                var enemydamage = Math.floor((Math.random()*30)+15);	
+                var newplayerpick = player - enemydamage;
+                var newenemypick = wolf - playerdamage;
+            
+                $('#wolf #wolflife').text(newplayerpick);
+                $('#health').text(newenemypick);
+            
+                    if (newplayerpick <= 0) {
+                        player = 0;
+                        $('#health').text(player);
+                        document.location.href = "gameover.html";
+                    }
+                    if (newenemypick <= 0)  {
+                        wolf = 0;
+                        $('#wolf #wolflife').text(enemypick)
+                        $("#topbar").html('<img src="assets/images/youwin.png">');
+                    }
+                
+            });
+    
+    
+ });
+
+ $(document).on('click','.answerTwoB', function(){   
+    sheep = sheep - 3;
+    $('#sheep').html(sheep);
+    $(".answerTwoB").attr("class", "answerTwoC")
+    $(".answerOneB").attr("class", "answerOneC")
+    $(".introScene").css("background-image", "url(images/scenebridgetroll.jpg)");
+
+    x++
+    $('#questions').text(questions[x].question);
+    $('#answerOne').text(questions[x].A[0]);
+    $('#answerTwo').text(questions[x].B[0]);
+ });
 
  //Fourth Scene: 
  //if user selects to move on to the next screen they
@@ -185,9 +254,6 @@ var questions = [
     //BRIDGE TROLL 1
     {
     question: "A bridge troll appears and blocks your way. The troll is extremely strong and dangerous. Do you choose to answer his question or fight the troll.",
-
-    Image: ["images/sceneBridgeTroll.jpg"],
-    A: ["If you choose to fight troll then you loose random life and cause random damage (more if you have the STAFF). The troll most likely kills the Shepherd, game over."], 
 
     Image: ["scenebridgetroll.jpg"],
     A: ["Run from Troll and lose time."], 
