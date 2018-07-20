@@ -13,8 +13,8 @@ $(document).ready(function(){
 
 var score = (time*10) + (sheep*10) + (health*5);
 
-var time = 300
-    var timerspeed = 300
+var time = 150
+var timerspeed = 0
 var sheep = 5
 var health = 100
 var x = 0
@@ -24,9 +24,13 @@ function startTimer(){
     time--;
     $('#time').text("00:" + time);
 
-    // if (time > 60) {
-    //     $('#time').text("1:" + time/60);
-    // }
+    if (time > 60) {
+        minutes = Math.floor(time / 60);
+        seconds = time - minutes * 60;
+        formattime= minutes + ":" + seconds;
+
+        $('#time').text(formattime);
+    }
 
     if (time < 10) {
     $('#time').text("00:0" + time);     
@@ -75,6 +79,7 @@ $("#staff").on("click", function(){
 
 
 //SWAMP SCENE IS SET ON CLICK OF ITEMSCOLLECTED
+
 $(document).on('click','#itemsCollected', function(){
     // $(".introScene").css("background-image", "url(images/sceneSwamp.png)");  // this code needs to be on top for it to work.
     background = questions[x].Image[0];
@@ -93,33 +98,6 @@ $(document).on('click','#itemsCollected', function(){
 
 // ;}, 500);
 });
-
-
-//SET SWAMP SC. This function will begin looping through questions and answer choices for each scene.
-
-// $(document).on('click','.answerOne', function(){
-
-    // x++
-    //     $('#questions').text(questions[x].question);
-    //     $('#answerOne').text(questions[x].A[0]);
-    //     $('#answerTwo').text(questions[x].B[0]);
-
-       
-// });
-
-// $(document).on('click','.answerTwo', function(){
-//     x++
-//         $('#questions').text(questions[x].question);
-//         $('#answerOne').text(questions[x].A[0]);
-//         $('#answerTwo').text(questions[x].B[0]);
-// });
-
-
-//Scene 2: 
-//this will add the amount of time and sheep for the first iteration:
-//user will either lose 60 seconds or lose (random sheep and 20 seconds)
-//**note time needs to be set higher */
-
 
 
 //SWAMP:
@@ -175,29 +153,41 @@ $(document).on('click','.answerOne', function(){
                 var player = parseInt($('#health').text());
                 var wolf = parseInt($('#wolf #wolflife').text());
                 var staffdamage = $('#itemsHolder #staff').val();  //I gave the staff button a value of 30
-                var playerdamage = Math.floor((Math.random()*30));	
+                var playerdamage = Math.floor((Math.random()*30)+30);	
                 var enemydamage = Math.floor((Math.random()*30)+15);	
-                var newplayerpick = player - enemydamage;
-                var newenemypick = wolf - playerdamage;
+                var newplayerlife = player - enemydamage;
+                var newenemylife = wolf - playerdamage;
             
-                $('#wolf #wolflife').text(newplayerpick);
-                $('#health').text(newenemypick);
+                $('#wolf #wolflife').text(newenemylife);
+                $('#health').text(newplayerlife);
             
-                    if (newplayerpick <= 0) {
+                    if (newplayerlife <= 0) {
                         player = 0;
                         $('#health').text(player);
-                        document.location.href = "gameover.html";
+                        // document.location.href = "gameover.html";
                     }
-                    if (newenemypick <= 0)  {
+                    if (newenemylife <= 0)  {
                         wolf = 0;
-                        $('#wolf #wolflife').text(enemypick)
-                        $("#topbar").html('<img src="assets/images/youwin.png">');
+                        $('#wolf #wolflife').text(wolf)
+                        $("#questions").html('<img id="wolfwin" src="images/wolfwin.png">');
                     }
                 
             });
     
     
  });
+
+ $(document).on('click','#wolfwin', function(){
+    x++
+    $("#wolf").hide();
+    $("#shepicon").hide();
+    $("#attack").hide();
+    $(".introScene").css("background-image", "url(images/scenebridgetroll.jpg)");
+    $('#questions').text(questions[x].question);
+    $('#answerOne').text(questions[x].A[0]);
+    $('#answerTwo').text(questions[x].B[0]);
+ });
+
 
  $(document).on('click','.answerTwoB', function(){   
     sheep = sheep - 3;
