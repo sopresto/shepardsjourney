@@ -330,7 +330,7 @@ h2 {
 /* } */ 
 
 html {
-    overflow-y: scroll;
+    overflow: hidden;
 }
 
 .introScene {
@@ -363,25 +363,24 @@ h2 {
     height: 100px;
 }
 
-#border {
+/* #border {
     border-style: solid;
     border-width: 5px;
     border-color: green;
     height: 100px;
-}
+} */
 
 
 #wholegame  {
-    margin-top: 70px;
     width: 1000px;
-    height: 770px;
-    padding: 20px;
+    height: 738px;
+    padding: 10px;
 }
 
 #questionstatus {
     height: 330px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     padding: 5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 25px;
@@ -404,7 +403,6 @@ h2 {
 
 #answersitems  {
     width: 600px;
-    margin-left: 10px;
     height: auto;
     float: left;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -438,9 +436,8 @@ h2 {
 #itemsHolder {
     border: solid 5px green;
     float: right;
-    width: 330px;
+    width: 340px;
     height: 300px;
-    margin-right: 10px;
     padding: 10px;
     text-align: center;
     color: white;
@@ -592,10 +589,11 @@ h2 {
 
 #answerOne, #answerTwo {
     padding: 5px;
-    background: rgba(204, 204, 204, 0.85);
+    background: linear-gradient(rgb(15, 114, 40, 0.85),rgba(204, 204, 204, 0.85), rgb(15, 114, 40, 0.85));  
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50px;
 }
 
 #answerOne {
@@ -605,6 +603,18 @@ h2 {
 
 #answerTwo {
     border-top-width: 10px;
+}
+
+.answerOneB, .answerTwoB, .answerOneC, .answerTwoC {
+    padding: 5px;
+    background: linear-gradient(rgb(15, 114, 40, 0.85),rgba(204, 204, 204, 0.85), rgb(15, 114, 40, 0.85));  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;   
+    border-style: solid;
+    border-width: 5px;
+    border-color: green; 
 }
 
 #itemsContainer {
@@ -661,4 +671,19 @@ h2 {
     position: absolute;
     bottom: 8px;
     left: 56px;
+}
+
+#replay {
+    animation: blinker 1s linear infinite; 
+}
+
+#yourScoreIs {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+
+input, #submitScore {
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
 }

@@ -157,7 +157,7 @@ $(document).on('click', '.answerOneB', function () {
         var newplayerlife = player - enemydamage;
         var newenemylife = wolf - playerdamage;
 
-        $('#wolf #wolflife').text(newenemylife);
+        $('#wolf #wolfLife').text(newenemylife);
         $('#health').text(newplayerlife);
 
         if (newplayerlife <= 0) {
@@ -167,7 +167,7 @@ $(document).on('click', '.answerOneB', function () {
         }
         if (newenemylife <= 0) {
             wolf = 0;
-            $('#wolf #wolflife').text(wolf)
+            $('#wolf #wolfLife').text(wolf)
             $("#questions").html('<img id="wolfwin" src="images/wolfwin.png">');
         }
 
