@@ -169,7 +169,7 @@ $(document).on('click','.answerOne', function(){
     $('#time').html(time);
     $("#answerOne").attr("class", "answerOneB")
     $("#answerTwo").attr("class", "answerTwoB")
-    $(".introScene").css("background-image", "url(images/SceneScaryWoodWolf.jpg)");
+    $(".introScene").css("background-image", "url(images/scenescarywoodwolf.jpg)");
 
     x++
     $('#questions').text(questions[x].question);
@@ -349,14 +349,14 @@ var questions = [
     //SWAMP QUESTION
     {
     question: "The quickest way back appears to be directly through a swampy mess! Do you choose to wade through the swamp or safely hike around. The swamp is 3x faster but also 3x more dangerous. So choose wiseley!",
-    Image: ["images/sceneSwamp.png"],
+    Image: ["images/sceneswamp.png"],
     A: ["If you choose to wade through the swamp then you only lose 20 seconds and	anywhere from 0-3 sheep."], 
     B: ["If you choose to go around then you loose no sheep but 60 seconds off of the clock."] },
 
     //WOLF QUESTION
     {
     question: "A wolf attacks, you can choose to fight back or run.",
-    Image: ["images/sceneScaryWoodWolf.png"],
+    Image: ["images/scenescarywoodwolf.png"],
     A: ["If you fight back then (generates random damage) to both you and wolf"], 
     B: ["If you choose run then you loose a random of 0-3 sheep from your herd."] },
 
@@ -373,7 +373,7 @@ var questions = [
      //BRIDGE TROLL 2 QUESTION:
     {
     question: "What # is the first element of an array?!?!",
-    Image: ["images/sceneBridgeTroll.jpg"],
+    Image: ["images/scenebridgetroll.jpg"],
     A: ["0"], 
     B: ["1"]
     },
