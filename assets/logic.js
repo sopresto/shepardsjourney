@@ -9,6 +9,7 @@ $(document).ready(function(){
 });
 
 
+
 //these are global variables.
 
 var score = (time*10) + (sheep*10) + (health*5);
@@ -17,6 +18,7 @@ var time = 150
 var timerspeed = 0
 var sheep = 5
 var health = 100
+
 var x = 0
 var timer; 
 
@@ -27,6 +29,9 @@ function startTimer(){
     if (time > 60) {
         minutes = Math.floor(time / 60);
         seconds = time - minutes * 60;
+            if (seconds <10) {
+                seconds = "0"+seconds;
+            }
         formattime= minutes + ":" + seconds;
 
         $('#time').text(formattime);
@@ -44,11 +49,14 @@ function startTimer(){
     }
 }
 
+
+
 //this will append time, sheeo, health to their respective divs.
 
 $('#time').html(time);
 $('#sheep').html(sheep);
 $('#health').html(health);
+
 
  //this will hide the answers div as it does not need to appear in this scene.
  $("#answerTwo").hide();
@@ -57,24 +65,57 @@ $('#health').html(health);
 //opener: shows three tools for selection; ask which item to be selected in quetion div;
 //on click of a tool item will move into items div 
 
-$("#food").on("click", function () {
-    var health = 100
+
+//APPEND ITEMS TO ITEMSHOLDER DIV
+$(document).on('click', "#food", function () {
     var food = $("#food")
+    $("#food").addClass("usefood");
     $("#itemsHolder").append(food);
-    $('#health').html("Remaining health: " + health);
+    timerspeed = timerspeed + 100
+    console.log(timerspeed)
 })
 
-$("#staff").on("click", function(){
+$(document).on('click', "#staff", function(){
     var staff = $("#staff")
-    $("#itemsHolder").append(staff);   
+    $("#itemsHolder").append(staff);
+    timerspeed = timerspeed + 100
+    console.log(timerspeed)
  })
 
- $("#flute").on("click", function(){
+ $(document).on('click', "#flute", function(){
     var flute = $("#flute");
     var sheep = 5;
+    $("#flute").addClass("useflute");
     $("#itemsHolder").append(flute);
-    $('#sheep').html("This is how many sheep you have: " + sheep);
+    timerspeed = timerspeed + 100
+    console.log(timerspeed)
  })
+
+
+
+ //USE ITEMS FUNCTIONS
+
+//USE FOOD
+$(document).on('click','.usefood', function(){
+    health = parseInt($('#health').text()) + 100
+    $('#health').html(health);
+    $('.usefood').removeClass('usefood');
+
+    if (health > 100) {
+        health = 100
+        $('#health').html(health);
+    }
+
+});
+
+//USE FLUTE
+$(document).on('click','.useflute', function(){
+    sheep = parseInt($('#sheep').text()) + 5
+    $('#sheep').html(sheep);
+    $('.useflute').removeClass('useflute');
+});
+
+
 
 
 
@@ -89,6 +130,7 @@ $(document).on('click','#itemsCollected', function(){
     $('#itemsCollected').hide();
     $("#itemsContainer").hide();
     timer = setInterval(startTimer, 1000 - timerspeed);
+    console.log(timer);
 
 // setTimeout(function () { 
 
@@ -143,6 +185,7 @@ $(document).on('click','.answerOne', function(){
 //WOLF:
 
  $(document).on('click','.answerOneB', function(){
+    // $("#questions").html().
     $("#wolf").show();
     $("#shepicon").show();
     $("#attack").show();
@@ -157,6 +200,8 @@ $(document).on('click','.answerOne', function(){
                 var enemydamage = Math.floor((Math.random()*30)+15);	
                 var newplayerlife = player - enemydamage;
                 var newenemylife = wolf - playerdamage;
+
+                
             
                 $('#wolf #wolflife').text(newenemylife);
                 $('#health').text(newplayerlife);
@@ -164,7 +209,7 @@ $(document).on('click','.answerOne', function(){
                     if (newplayerlife <= 0) {
                         player = 0;
                         $('#health').text(player);
-                        // document.location.href = "gameover.html";
+                        document.location.href = "gameover.html";
                     }
                     if (newenemylife <= 0)  {
                         wolf = 0;
@@ -200,7 +245,17 @@ $(document).on('click','.answerOne', function(){
     $('#questions').text(questions[x].question);
     $('#answerOne').text(questions[x].A[0]);
     $('#answerTwo').text(questions[x].B[0]);
+
+    if (sheep <=0) {
+        sheep = 0 
+        $('#sheep').html(sheep);
+        document.location.href = "gameover.html";
+    }
+    
  });
+
+
+
 
  //Fourth Scene: 
  //if user selects to move on to the next screen they
@@ -223,15 +278,13 @@ $(document).on('click','.answerOne', function(){
 
 
 
-
-
 var questions = [
 
     //SWAMP QUESTION
     {
     question: "The quickest way back appears to be directly through a swampy mess! Do you choose to wade through the swamp or safely hike around. The swamp is 3x faster but also 3x more dangerous. So choose wiseley!",
     Image: ["images/sceneSwamp.png"],
-    A: ["If you choose to wade through the swamp then you only loose 20 seconds and	anywhere from 0-3 sheep."], 
+    A: ["If you choose to wade through the swamp then you only lose 20 seconds and	anywhere from 0-3 sheep."], 
     B: ["If you choose to go around then you loose no sheep but 60 seconds off of the clock."] },
 
     //WOLF QUESTION

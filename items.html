@@ -14,11 +14,12 @@
         <center>
             <div class="border" id="wholegame">
                 <div id="gametitle">
-                    <h1> Shepard's Journey</h1>
+                    <h1> Sheppard's Journey</h1>
                 </div>
 
                 <div class="border" id="questionstatus">
                     <div class="border" id="questions">
+                           
 
                         <p>You must first decide on the items that you want to keep for your journey. 
                             As a Sheppard you typically carry a STAFF, FLUTE and some FOOD. 
@@ -26,12 +27,21 @@
                             They are all essential but remember you are in a race against time so any items will slow you down. 
                             Choose any items that you want to bring with you for your journey.</p>
                     </div>
-                    <div id="status">
-                        <div class="border right" id="time">
+                    <div id="status time">
+                        <div class="time border right">
+                        <h2>Time Until Sunset </h2> 
+                        <div id="time"></div>
                         </div>
-                        <div class="border right" id="health">
+                        
+                        <div class="time border right">
+                        <h2>Health </h2> 
+                        <div id="health"></div>
                         </div>
-                        <div class="border right" id="sheep">
+
+                        <div class="time border right">
+                        <h2>Sheep </h2> 
+                        <div id="sheep"></div>
+                        
                         </div>
                     </div>
 
@@ -69,17 +79,18 @@
 
                     <div id="characterContainer">
 
-                        <img class="characters" id="shepicon" src="images/shep.png" alt="" height="150px" width="150px">
+                            <img class="characters" id="shepicon" src="images/shep.png" alt="" height="150px" width="150px">
+                            <img class="characters" id="attack" src="images/attack.png" alt="" height="60px" width="100px"> 
+                            <span class="characters" id="wolf">
+                                    <span class="lifeText"> LIFE: </span>
+                                    <span id="wolfLife" value="100"> 100 </span>
+                                    <img src="images/wolf.jpg" alt="" height="150px" width="200px">        
+                            </span>
 
-                        <img class="characters" id="sheepicon" src="images/sheepMultiple.jpg" alt="" height="150px" width="200px">
+                        <!-- <img class="characters" id="sheepicon" src="images/sheepMultiple.jpg" alt="" height="150px" width="200px"> -->
 
-                        <img class="characters" id="attack" src="images/attack.png" alt="" height="60px" width="100px"> 
-
-                        <span class="characters" id="wolf">
-                            <span class="lifeText"> LIFE: </span>
-                            <span id="wolfLife" value="100"> 100 </span>
-                            <img src="images/wolf.jpg" alt="" height="150px" width="200px">        
-                        </span>
+                       
+                        
 
                         <!-- <span class="characters" id="troll" style="visibility: hidden">
                             <span class="lifeText"> LIFE: </span>
