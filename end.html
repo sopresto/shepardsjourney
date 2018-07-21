@@ -15,13 +15,24 @@
 
         <center>
             <div class="border" id="wholegame">
+				<h1> 
                 <div id="gametitle">
-                    <h1> GAME OVER!</h1>
-                </div>
+                     GAME OVER!
+				</div>
+				</h1>
+
+				<h2>
+				<div id="gametitle">
+						Your Score:
+				</div>
+
+				<div id="finalscroe">
+				</div>
+				</h2>
+
                 <br>
                 <br>
-                <p id="introParagraph"> You have lost the game. Go ahead and submit your score. </p>
-                <div id="yourScoreIs">Your Score is:</div>
+                <p id="introParagraph"> Go ahead and submit your score. </p>
                 <br>
 
 <form>
@@ -30,7 +41,7 @@
 	<input type="text" placeholder="put your score in">
 
 
-	<button>submit your score</button>
+	<button id="submitScore">Submit your score</button>
 </form>
 
 <br>
@@ -39,11 +50,7 @@
 <div id="highscorelist">
 	
 </div>
-
-<div id="yourScoreIs">Your Score is:</div>
 </center>
-
-
 
 <!-- Firebase Reference -->
 <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -65,51 +72,72 @@
 	firebase.initializeApp(config);
 
 	// Create a variable to reference the database.
-    var database = firebase.database();
-    
+	var database = firebase.database();
 
-    
+	var leaders = [];
 
-	// var leaders = [];
-
-	// $('button').on('click', function(){
-	// 	event.preventDefault();
+	$('button').on('click', function(){
+		event.preventDefault();
 		
-	// 	var nam = $('input').eq(0).val();
-	// 	var scor = $('input').eq(1).val();
+		var nam = $('input').eq(0).val();
+		var scor = $('input').eq(1).val();
 
-	// 	database.ref('highscores').push({
-	// 		name: nam,
-	// 		score: scor
-	// 	});
-	// });
+		database.ref('highscores').push({
+			name: nam,
+			score: scor
+		});
+	});
 
 
-	// database.ref('highscores').orderByChild("score").on("child_added", function(childSnapshot) {
+	database.ref('highscores').orderByChild("score").on("child_added", function(childSnapshot) {
 
-	// 	leaders.push(childSnapshot.val().score + "|" + childSnapshot.val().name);
+		leaders.push(childSnapshot.val().score + "|" + childSnapshot.val().name);
 
-	// 	// ["4|jason"]
+		// ["4|jason"]
 
-	// 	$('#highscorelist').empty();
+		$('#highscorelist').empty();
 
-	// 	leaders.sort();
+		leaders.sort();
 
-	// 	$.each(leaders, function(index, value){
-	// 		var scoreAndName = value.split("|");
-	// 		//[4, "jason"]
-	// 		var score = scoreAndName[0];
-	// 		var name = scoreAndName[1];
+		$.each(leaders, function(index, value){
+			var scoreAndName = value.split("|");
+			//[4, "jason"]
+			var score = scoreAndName[0];
+			var name = scoreAndName[1];
 
-	// 		var p = $('<p>');
+			var p = $('<p>');
 
-	// 		var str = name + ": ";
-	// 		str += score;
-	// 		p.text(str);
-	// 		$('#highscorelist').prepend(p);
-	// 	});
-	// });
+			var str = name + ": ";
+			str += score;
+			p.text(str);
+			$('#highscorelist').prepend(p);
+		});
+	});
+
+	$(document).ready(function(){
+		score = (time*10) + (sheep*10) + (health*5)
+    	$("#finalscroe").html(score);
+	});
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="assets/logic.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

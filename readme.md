@@ -1,3 +1,5 @@
+# Shepard's Journey
+
 On page load : display background story
 1st action: "click start button to start game"
 
